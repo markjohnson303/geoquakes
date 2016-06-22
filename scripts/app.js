@@ -11,21 +11,36 @@ $(document).on("ready", function() {
 		var template = Handlebars.compile(source);
 		var hmm = template({quake: data.features});
 		$("#info").append(hmm);
+
+		for (var item in data.features){
+			var latitude = data.features[item].geometry.coordinates[0];
+			var longitude = data.features[item].geometry.coordinates[1];
+			var title = data.features[item].properties.title;
+
+			var marker = new google.maps.Marker({
+				position: {lat: latitude, lng: longitude},
+				map: map,
+				title: title
+
+			});
+		}
+
 	});
 	var map;
 	function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 39.76, lng: -105.01},
-          zoom: 8
-        });
-    }
+		map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: 39.76, lng: -105.01},
+			zoom: 8
+		});
+	}
 
-    initMap();
+	initMap();
 
-      var marker = new google.maps.Marker({
-    position: {lat: 39.76, lng: -105.01},
-    map: map,
-    title: 'Hello World!'
-  });
+	var marker = new google.maps.Marker({
+		position: {lat: 39.76, lng: -105.01},
+		map: map,
+		title: 'Hello World!'
+
+	});
 
 });
