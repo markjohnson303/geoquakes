@@ -12,5 +12,20 @@ $(document).on("ready", function() {
 		var hmm = template({quake: data.features});
 		$("#info").append(hmm);
 	});
+	var map;
+	function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 39.76, lng: -105.01},
+          zoom: 8
+        });
+    }
+
+    initMap();
+
+      var marker = new google.maps.Marker({
+    position: {lat: 39.76, lng: -105.01},
+    map: map,
+    title: 'Hello World!'
+  });
 
 });
