@@ -5,6 +5,8 @@ var map;
 var template;
 
 $(document).on("ready", function() {
-
+	$.get(weekly_quakes_endpoint, function(data){
+		console.log(data);
+	});
 
 });
